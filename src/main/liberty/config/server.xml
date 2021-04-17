@@ -29,6 +29,7 @@
 
 <server>
   <featureManager>
+    <feature>jaxrs-2.1</feature>
   </featureManager>
 
   <variable name="default.http.port" defaultValue="80"/>
