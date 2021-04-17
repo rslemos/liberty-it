@@ -47,9 +47,21 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <liberty.var.default.http.port>9080</liberty.var.default.http.port>
+    <liberty.var.app.context.root>${project.artifactId}</liberty.var.app.context.root>
   </properties>
 
   <build>
     <finalName>${project.artifactId}</finalName>
+    <plugins>
+      <plugin>
+        <groupId>io.openliberty.tools</groupId>
+        <artifactId>liberty-maven-plugin</artifactId>
+        <version>3.3.4</version>
+        <configuration>
+          <serverName>${project.artifactId}</serverName>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>
