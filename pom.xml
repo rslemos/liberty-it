@@ -139,6 +139,7 @@
             <goals>
               <goal>create</goal>
               <goal>install-feature</goal>
+              <!-- <goal>configure-arquillian</goal> -->
               <goal>deploy</goal>
               <goal>test-start</goal>
             </goals>
