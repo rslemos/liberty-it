@@ -11,8 +11,6 @@ import java.net.URISyntaxException;
 import java.text.DateFormat;
 import java.util.Date;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -21,11 +19,13 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 public class InetdIT {
   private static URI baseHref;
 
-  @BeforeAll
+  @BeforeClass
   public static void init() throws URISyntaxException {
     String base = System.getProperty("base.href");
     baseHref = new URI(base).resolve("rest/inetd/");
