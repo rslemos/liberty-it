@@ -132,9 +132,6 @@
         <groupId>io.openliberty.tools</groupId>
         <artifactId>liberty-maven-plugin</artifactId>
         <version>3.3.4</version>
-        <configuration>
-          <serverName>${project.artifactId}</serverName>
-        </configuration>
         <executions>
           <execution>
             <id>start-test-server</id>
