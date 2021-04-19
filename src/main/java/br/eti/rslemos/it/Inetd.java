@@ -1,9 +1,7 @@
 package br.eti.rslemos.it;
 
 import java.io.Reader;
-import java.text.DateFormat;
-import java.util.Date;
-
+import javax.inject.Inject;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.HEAD;
@@ -18,6 +16,10 @@ import javax.ws.rs.core.UriInfo;
 
 @Path("/inetd")
 public class Inetd {
+  @Inject BlackHole hole;
+  @Inject EchoicChamber chamber;
+  @Inject SwissClock clock;
+
   @Context
   public void setUriInfo(UriInfo info) {
     System.out.printf("request URI: %s\n", info.getRequestUri());
@@ -28,26 +30,24 @@ public class Inetd {
   @GET @POST @PUT @DELETE @HEAD @OPTIONS @PATCH
   @Path("/discard")
   public void discard() {
-    System.out.println("discarding");
+    hole.feed();
   }
 
   @GET
   @Path("/echo/{argument}")
   public String echo(@PathParam("argument") String argument) {
-    return argument;
+    return chamber.introduce(argument);
   }
 
   @POST @PUT
   @Path("/echo")
   public Reader echo(Reader argument) {
-    return argument;
+    return chamber.introduce(argument);
   }
 
-  private static final DateFormat DATETIME_FORMAT = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.LONG);
   @GET
   @Path("/daytime")
   public String daytime() {
-    final Date NOW = new Date();
-    return DATETIME_FORMAT.format(NOW);
+    return clock.read();
   }
 }
